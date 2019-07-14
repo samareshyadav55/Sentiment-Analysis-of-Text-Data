@@ -46,7 +46,7 @@ fdist
 from nltk.probability import FreqDist
 fdist = FreqDist(newdf['tokens'])
 print(fdist)
-----------------------------------------------------------------------------------------------------------------------------------------
+#----------------------------------------------------------------------------------------------------------------------------------------
 #SENTIMENT ANALYSIS OF TWITTER DATA
 from textblob import TextBlob
 newdf['sentiment_ploarity']=newdf['stemmed_words'].apply(lambda tweet: TextBlob(tweet).sentiment.polarity)
