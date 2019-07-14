@@ -45,4 +45,18 @@ fdist=Counter(" ".join(newdf["stemmed_words"]).split()).most_common(15)
 fdist
 from nltk.probability import FreqDist
 fdist = FreqDist(newdf['tokens'])
-print(fdist
+print(fdist)
+----------------------------------------------------------------------------------------------------------------------------------------
+#SENTIMENT ANALYSIS OF TWITTER DATA
+from textblob import TextBlob
+newdf['sentiment_ploarity']=newdf['stemmed_words'].apply(lambda tweet: TextBlob(tweet).sentiment.polarity)
+def f(data):
+    if data['sentiment_ploarity']>0:
+        return 'positive'
+    elif data['sentiment_ploarity']<0:
+        
+        return 'negative'
+    else:
+        return 'neutral'
+newdf['sentiment_analysis'] = newdf.apply(f,axis=1)
+
